@@ -1,11 +1,15 @@
 vpath %.c src/push_swap
+vpath %.c src/push_swap/operations
+vpath %.c src/push_swap/utils
+vpath %.c src/push_swap/sort
+
 vpath %.c src/checker
 
 NAME := push_swap
 NAME_BONUS := checker
 
 CFLAGS := -Wextra -Wall -Werror
-CFLAGS += -O3 -march=native -flto
+CFLAGS += -O3 -g3
 
 LIBTF := ./lib/libft
 LIBS := -L$(LIBTF) -lft
@@ -15,7 +19,8 @@ OBJ_DIR := build
 INCLUDE_DIR := include
 INCLUDES := -I$(INCLUDE_DIR) -I$(LIBTF)
 
-SRCS := push_swap.c
+SRCS := push_swap.c erros.c parse_args.c init.c sa.c sb.c ss.c pa.c pb.c ra.c rb.c rr.c rra.c rrb.c rrr.c
+SRCS += sort_three.c check_sorted.c max.c min.c
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 SRCS_BONUS := checker.c
