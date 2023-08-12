@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:41:25 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/08 01:03:52 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:13:18 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "stdlib.h"
+# include <limits.h>
 # include <stdbool.h>
 
 typedef struct s_push_swap
