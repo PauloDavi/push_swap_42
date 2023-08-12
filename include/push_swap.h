@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cobli <cobli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:41:25 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/12 14:13:18 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:18:19 by cobli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ int			max_a(t_push_swap *push_swap);
 int			max_b(t_push_swap *push_swap);
 
 // Sort
-void		sort_three(t_push_swap *push_swap);
 bool		check_sorted(t_push_swap *push_swap);
+void		sort_two(t_push_swap *push_swap);
+void		sort_three(t_push_swap *push_swap);
+void		sort(t_push_swap *push_swap);
 
 // Operations
 void		sa(t_push_swap *p);
