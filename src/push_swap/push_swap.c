@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cobli <cobli@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:40:14 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/11 00:26:58 by cobli            ###   ########.fr       */
+/*   Updated: 2023/08/26 15:58:04 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	main(int argc, char **argv)
 	else
 		sort(&push_swap);
 	printa(&push_swap);
+	printb(&push_swap);
 	free(push_swap.a);
 	free(push_swap.b);
 	return (EXIT_SUCCESS);
