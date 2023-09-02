@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rra.c                                              :+:      :+:    :+:   */
+/*   find_top_element_b_index.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 23:34:01 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/08 00:20:56 by pdavi-al         ###   ########.fr       */
+/*   Created: 2023/09/02 12:59:31 by pdavi-al          #+#    #+#             */
+/*   Updated: 2023/09/02 12:59:44 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_push_swap *p)
+size_t	find_top_element_b_index(t_push_swap *p, int a_element)
 {
-	ft_printf("rra\n");
-	op_rra(p);
-}
+	int		i;
+	size_t	find_index;
+	int		min;
+	int		max;
 
-void	op_rra(t_push_swap *p)
-{
-	size_t	i;
-
-	if (p->a_size < 1)
-		return ;
-	i = 0;
-	while (++i < p->a_size)
-		ft_intswap(p->a + i, p->a + i - 1);
+	min = min_b(p);
+	max = max_b(p);
+	if (a_element < min || a_element > max)
+		return (find_index_b(p, max));
+	i = a_element - 1;
+	while (i >= min)
+	{
+		find_index = find_index_b(p, i);
+		if (find_index != SIZE_MAX)
+			return (find_index);
+		i--;
+	}
+	return (find_index);
 }

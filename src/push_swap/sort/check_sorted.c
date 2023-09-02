@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 00:58:27 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/08 01:10:21 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 13:27:32 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ bool	check_sorted(t_push_swap *push_swap)
 	int		nbr;
 
 	i = 1;
-	nbr = push_swap->a[0];
-	while (i < push_swap->a_size)
+	nbr = push_swap->a.tab[0];
+	while (i < push_swap->a.size)
 	{
-		if (nbr < push_swap->a[i])
+		if (nbr < push_swap->a.tab[i])
 			return (false);
-		nbr = push_swap->a[i++];
+		nbr = push_swap->a.tab[i++];
 	}
 	return (true);
 }

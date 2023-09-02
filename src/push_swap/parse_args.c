@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:44:28 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/12 14:28:05 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 16:25:29 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	parse_args(int argc, char **argv, t_push_swap *push_swap)
 
 	if (argc == 2)
 	{
+		if (argv[1][0] == '\0')
+			exit_error(push_swap);
 		numbers = ft_split_size(argv[1], ' ', &(push_swap->total_size));
 		if (!create_stack(push_swap, numbers))
 		{
@@ -44,20 +46,24 @@ static bool	create_stack(t_push_swap *push_swap, char **numbers)
 {
 	size_t	i;
 
-	push_swap->a = malloc(sizeof(int) * push_swap->total_size);
-	if (push_swap->a == NULL)
+	push_swap->a.tab = malloc(sizeof(int) * push_swap->total_size);
+	if (push_swap->a.tab == NULL)
 		return (false);
-	push_swap->b = malloc(sizeof(int) * push_swap->total_size);
-	if (push_swap->b == NULL)
+	push_swap->b.tab = malloc(sizeof(int) * push_swap->total_size);
+	if (push_swap->b.tab == NULL)
 	{
-		free(push_swap->a);
+		free(push_swap->a.tab);
 		return (false);
 	}
 	i = push_swap->total_size;
 	while (i--)
-		push_swap->a[i] = atoi_error(*(numbers++), push_swap);
-	push_swap->a_size = push_swap->total_size;
-	push_swap->b_size = 0;
+	{
+		if (ft_strlen(*(numbers)) == 0)
+			return (false);
+		push_swap->a.tab[i] = atoi_error(*(numbers++), push_swap);
+	}
+	push_swap->a.size = push_swap->total_size;
+	push_swap->b.size = 0;
 	return (true);
 }
 
@@ -67,11 +73,11 @@ static void	verify_dup(t_push_swap *push_swap)
 	size_t	j;
 
 	i = 0;
-	while (i < push_swap->a_size - 1)
+	while (i < push_swap->a.size - 1)
 	{
 		j = i + 1;
-		while (j < push_swap->a_size)
-			if (push_swap->a[i] == push_swap->a[j++])
+		while (j < push_swap->a.size)
+			if (push_swap->a.tab[i] == push_swap->a.tab[j++])
 				exit_error(push_swap);
 		i++;
 	}

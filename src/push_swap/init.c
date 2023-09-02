@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 23:42:04 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/26 15:50:33 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:32:47 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	init_push_swap(t_push_swap *push_swap)
 {
-	push_swap->a = NULL;
-	push_swap->b = NULL;
-	push_swap->a_size = 0;
-	push_swap->b_size = 0;
+	push_swap->a.tab = NULL;
+	push_swap->b.tab = NULL;
+	push_swap->a.size = 0;
+	push_swap->b.size = 0;
+	push_swap->a.type = STACK_A;
+	push_swap->b.type = STACK_B;
 	push_swap->total_size = 0;
 }
 

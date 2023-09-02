@@ -5,8 +5,8 @@
             "name": "Debug push_swap",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/a.out", // Certifique-se de que o nome do executável esteja correto
-            "args": [], // Argumentos do programa, se necessário
+            "program": "${workspaceFolder}/push_swap", // Certifique-se de que o nome do executável esteja correto
+            "args": ["4 8 1 6 2 7 3 5 10 9"], // Argumentos do programa, se necessário
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

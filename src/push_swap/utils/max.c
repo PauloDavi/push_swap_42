@@ -6,35 +6,35 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 23:46:56 by cobli             #+#    #+#             */
-/*   Updated: 2023/09/01 20:27:10 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:55:45 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	max(int *array, size_t size);
+static int	max_x(t_stack *stack);
 
 int	max_a(t_push_swap *push_swap)
 {
-	return (max(push_swap->a, push_swap->a_size));
+	return (max_x(&(push_swap->a)));
 }
 
 int	max_b(t_push_swap *push_swap)
 {
-	return (max(push_swap->b, push_swap->b_size));
+	return (max_x(&(push_swap->b)));
 }
 
-static int	max(int *array, size_t size)
+static int	max_x(t_stack *stack)
 {
 	size_t	i;
 	int		max;
 
-	max = array[0];
+	max = stack->tab[0];
 	i = 1;
-	while (i < size)
+	while (i < stack->size)
 	{
-		if (array[i] > max)
-			max = array[i];
+		if (stack->tab[i] > max)
+			max = stack->tab[i];
 		i++;
 	}
 	return (max);

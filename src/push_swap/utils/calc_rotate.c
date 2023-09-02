@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three.c                                       :+:      :+:    :+:   */
+/*   calc_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 00:45:20 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/09/02 13:27:32 by pdavi-al         ###   ########.fr       */
+/*   Created: 2023/09/02 13:00:31 by pdavi-al          #+#    #+#             */
+/*   Updated: 2023/09/02 14:58:30 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_push_swap *push_swap)
+void	calc_rotate(t_state *state, size_t index, t_stack *stack)
 {
-	int	min;
-	int	max;
+	size_t	normalized_max_index;
 
-	if (check_sorted(push_swap))
+	if (index == stack->size - 1)
 		return ;
-	min = min_a(push_swap);
-	max = max_a(push_swap);
-	if (min == push_swap->a.tab[push_swap->a.size - 1])
+	normalized_max_index = stack->size - (stack->size & 1);
+	if (index >= normalized_max_index / 2)
 	{
-		rra(push_swap);
-		sa(push_swap);
-	}
-	else if (max == push_swap->a.tab[push_swap->a.size - 1])
-	{
-		ra(push_swap);
-		if (!check_sorted(push_swap))
-			sa(push_swap);
+		if (stack->type == STACK_A)
+			state->quants.ra = stack->size - index - 1;
+		else
+			state->quants.rb = stack->size - index - 1;
 	}
 	else
 	{
-		if (push_swap->a.tab[1] == max)
-			rra(push_swap);
+		if (stack->type == STACK_A)
+			state->quants.rra = index + 1;
 		else
-			sa(push_swap);
+			state->quants.rrb = index + 1;
 	}
 }
