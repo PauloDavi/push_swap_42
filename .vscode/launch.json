@@ -5,8 +5,8 @@
             "name": "Debug push_swap",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/push_swap", // Certifique-se de que o nome do executável esteja correto
-            "args": ["4 67 3 87 23 212 4381 12312 121 21923 3213 122"], // Argumentos do programa, se necessário
+            "program": "${workspaceFolder}/a.out", // Certifique-se de que o nome do executável esteja correto
+            "args": [], // Argumentos do programa, se necessário
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -19,7 +19,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "build push_swap", // Nome da tarefa para compilar o programa antes do debugging
+            // "preLaunchTask": "build push_swap", // Nome da tarefa para compilar o programa antes do debugging
             "miDebuggerPath": "/usr/bin/gdb" // Caminho para o executável do GDB no seu sistema
         }
     ]

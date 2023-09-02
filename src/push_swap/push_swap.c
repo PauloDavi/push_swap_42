@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:40:14 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/26 15:58:04 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 00:09:43 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ int	main(int argc, char **argv)
 		sort_three(&push_swap);
 	else
 		sort(&push_swap);
-	printa(&push_swap);
-	printb(&push_swap);
 	free(push_swap.a);
 	free(push_swap.b);
 	return (EXIT_SUCCESS);

@@ -3,42 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cobli <cobli@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 23:46:56 by cobli             #+#    #+#             */
-/*   Updated: 2023/08/13 23:46:57 by cobli            ###   ########.fr       */
+/*   Updated: 2023/09/01 20:27:10 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static int	max(int *array, size_t size);
+
 int	max_a(t_push_swap *push_swap)
 {
-	size_t	i;
-	int		max;
-
-	max = push_swap->a[0];
-	i = 1;
-	while (i < push_swap->a_size)
-	{
-		if (push_swap->a[i] > max)
-			max = push_swap->a[i];
-		i++;
-	}
-	return (max);
+	return (max(push_swap->a, push_swap->a_size));
 }
 
 int	max_b(t_push_swap *push_swap)
 {
+	return (max(push_swap->b, push_swap->b_size));
+}
+
+static int	max(int *array, size_t size)
+{
 	size_t	i;
 	int		max;
 
-	max = push_swap->b[0];
+	max = array[0];
 	i = 1;
-	while (i < push_swap->b_size)
+	while (i < size)
 	{
-		if (push_swap->b[i] > max)
-			max = push_swap->b[i];
+		if (array[i] > max)
+			max = array[i];
 		i++;
 	}
 	return (max);

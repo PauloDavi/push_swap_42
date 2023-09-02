@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 23:34:01 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/08/08 00:21:08 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 00:08:28 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	op_rrb(t_push_swap *p)
 	if (p->b_size < 1)
 		return ;
 	i = 0;
-	while (++i > p->b_size)
+	while (++i < p->b_size)
 		ft_intswap(p->b + i, p->b + i - 1);
 }

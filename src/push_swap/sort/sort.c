@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 00:53:44 by cobli             #+#    #+#             */
-/*   Updated: 2023/08/26 16:19:06 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 00:21:27 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ static void	push_cheaper_to_b(t_push_swap *p)
 	clean_state(&cheaper_state);
 	while (i < p->a_size)
 	{
-		printa(p);
-		printb(p);
 		clean_state(&current_state);
 		calc_rotate(&current_state, i, p->a_size, STACK_A);
 		calc_rotate(&current_state, find_top_element_b_index(p, p->a[i]),
-			p->b_size, STACK_B);
+				p->b_size, STACK_B);
 		optimize_state(&current_state);
 		calc_coast(&current_state);
 		if (current_state.coast < cheaper_state.coast)
@@ -63,7 +61,7 @@ static void	optimize_state(t_state *state)
 		state->quants.ra -= state->quants.rr;
 		state->quants.rb -= state->quants.rr;
 	}
-	else if (state->quants.rra && state->quants.rrb)
+	if (state->quants.rra && state->quants.rrb)
 	{
 		if (state->quants.rra < state->quants.rrb)
 			state->quants.rrr = state->quants.rra;
@@ -76,44 +74,46 @@ static void	optimize_state(t_state *state)
 
 static size_t	find_top_element_b_index(t_push_swap *p, int a_element)
 {
-	size_t	i;
-	size_t	previous_element;
+	int		i;
+	size_t	find_index;
 	int		min;
+	int		max;
 
 	min = min_b(p);
-	if (a_element < min || a_element > max_b(p))
-		return (find_index_b(p, min));
-	i = 0;
-	while (i < p->b_size)
+	max = max_b(p);
+	if (a_element < min || a_element > max)
+		return (find_index_b(p, max));
+	i = a_element - 1;
+	while (i >= min)
 	{
-		previous_element = i - 1;
-		if (i == 0)
-			previous_element = p->b_size - 1;
-		if (a_element > p->b[i] || a_element < p->b[previous_element])
-			break ;
-		i++;
+		find_index = find_index_b(p, i);
+		if (find_index != SIZE_MAX)
+			return (find_index);
+		i--;
 	}
-	return (i);
+	return (find_index);
 }
 
 static void	calc_rotate(t_state *state, size_t index, size_t total_size,
 		t_stack_type stack_type)
 {
-	size_t	normalized_total_size;
+	size_t	normalized_max_index;
 
-	normalized_total_size = total_size + (total_size & 1);
-	if (index < normalized_total_size / 2)
+	if (index == total_size - 1)
+		return ;
+	normalized_max_index = total_size - (total_size & 1);
+	if (index >= normalized_max_index / 2)
 	{
 		if (stack_type == STACK_A)
-			state->quants.ra = index;
+			state->quants.ra = total_size - index - 1;
 		else
-			state->quants.rb = index;
+			state->quants.rb = total_size - index - 1;
 	}
 	else
 	{
 		if (stack_type == STACK_A)
-			state->quants.rra = total_size - index;
+			state->quants.rra = index + 1;
 		else
-			state->quants.rrb = total_size - index;
+			state->quants.rrb = index + 1;
 	}
 }
