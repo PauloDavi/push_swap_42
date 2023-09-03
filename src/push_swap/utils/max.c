@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 23:46:56 by cobli             #+#    #+#             */
-/*   Updated: 2023/09/02 14:55:45 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 18:04:01 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,29 @@
 static int	max_x(t_stack *stack);
 
 int	max_a(t_push_swap *push_swap)
+{
+	return (max_x(&(push_swap->a)));
+}
+
+int	max_a_before(t_push_swap *push_swap, int max)
+{
+	size_t	find_index;
+	int		min;
+	int		i;
+
+	min = min_a(push_swap);
+	i = max - 1;
+	while (i >= min)
+	{
+		find_index = find_index_a(push_swap, i);
+		if (find_index != SIZE_MAX)
+			return (i);
+		i--;
+	}
+	return (find_index);
+}
+
+int	max2_a(t_push_swap *push_swap)
 {
 	return (max_x(&(push_swap->a)));
 }

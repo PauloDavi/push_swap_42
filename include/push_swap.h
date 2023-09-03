@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:41:25 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/09/02 15:40:28 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 18:22:45 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct s_quants
 	size_t			rrb;
 	size_t			rrr;
 }					t_quants;
+
+typedef struct s_maximum
+{
+	int				m1;
+	int				m2;
+	int				m3;
+}					t_maximum;
 
 typedef struct s_state
 {
@@ -68,6 +75,7 @@ int					min_a(t_push_swap *push_swap);
 int					min_b(t_push_swap *push_swap);
 int					max_a(t_push_swap *push_swap);
 int					max_b(t_push_swap *push_swap);
+int					max_a_before(t_push_swap *push_swap, int max);
 size_t				find_index_a(t_push_swap *push_swap, int element);
 size_t				find_index_b(t_push_swap *push_swap, int element);
 void				calc_coast(t_state *current_state);
@@ -76,7 +84,7 @@ void				calc_rotate(t_state *state, size_t index, t_stack *stack);
 void				optimize_state(t_state *state);
 void				clean_state(t_state *state);
 void				copy_state(t_state *previous_state, t_state *next_state);
-void				exec_state(t_push_swap *p, t_state *state);
+void				exec_state(t_push_swap *p, t_state *state, bool with_push);
 
 // Sort
 bool				check_sorted(t_push_swap *push_swap);

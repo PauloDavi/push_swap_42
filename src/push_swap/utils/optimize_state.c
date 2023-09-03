@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 13:01:24 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/09/02 13:01:35 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/02 17:34:01 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	optimize_state(t_state *state)
 		state->quants.ra -= state->quants.rr;
 		state->quants.rb -= state->quants.rr;
 	}
-	if (state->quants.rra && state->quants.rrb)
+	else if (state->quants.rra && state->quants.rrb)
 	{
 		if (state->quants.rra < state->quants.rrb)
 			state->quants.rrr = state->quants.rra;
