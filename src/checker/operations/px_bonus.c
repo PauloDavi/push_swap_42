@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sx.c                                               :+:      :+:    :+:   */
+/*   px_bonus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 23:34:01 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/09/03 17:21:11 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/03 17:20:30 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-static void	op_sx(t_stack *stack);
+static void	px(t_stack *stack1, t_stack *stack2, size_t total_size);
 
-void	sa(t_push_swap *p)
+void	pa(t_push_swap *p)
 {
-	ft_printf("sa\n");
-	op_sx(&(p->a));
+	px(&(p->a), &(p->b), p->total_size);
 }
 
-void	sb(t_push_swap *p)
+void	pb(t_push_swap *p)
 {
-	ft_printf("sb\n");
-	op_sx(&(p->b));
+	px(&(p->b), &(p->a), p->total_size);
 }
 
-void	ss(t_push_swap *p)
+static void	px(t_stack *stack1, t_stack *stack2, size_t total_size)
 {
-	ft_printf("ss\n");
-	op_sx(&(p->a));
-	op_sx(&(p->b));
-}
-
-static void	op_sx(t_stack *stack)
-{
-	if (stack->size < 1)
+	if (stack2->size == 0 || stack1->size == total_size)
 		return ;
-	ft_intswap((stack->tab + stack->size - 1), (stack->tab + stack->size - 2));
+	stack1->tab[stack1->size] = stack2->tab[stack2->size - 1];
+	stack1->size++;
+	stack2->size--;
 }

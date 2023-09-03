@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:41:25 by pdavi-al          #+#    #+#             */
-/*   Updated: 2023/09/02 18:22:45 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/03 17:31:22 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,6 @@ typedef struct s_push_swap
 	size_t			total_size;
 }					t_push_swap;
 
-void				printa(t_push_swap *push_swap);
-void				printb(t_push_swap *push_swap);
-
 // Main functions
 void				exit_error(t_push_swap *push_swap);
 void				exit_success(t_push_swap *push_swap);
@@ -90,25 +87,20 @@ void				exec_state(t_push_swap *p, t_state *state, bool with_push);
 bool				check_sorted(t_push_swap *push_swap);
 void				sort_two(t_push_swap *push_swap);
 void				sort_three(t_push_swap *push_swap);
+void				sort_four(t_push_swap *push_swap);
 void				sort(t_push_swap *push_swap);
 
 // Operations
 void				sa(t_push_swap *p);
-void				op_sa(t_push_swap *p);
 void				sb(t_push_swap *p);
-void				op_sb(t_push_swap *p);
 void				ss(t_push_swap *p);
 void				pa(t_push_swap *p);
 void				pb(t_push_swap *p);
 void				ra(t_push_swap *p);
-void				op_ra(t_push_swap *p);
 void				rb(t_push_swap *p);
-void				op_rb(t_push_swap *p);
 void				rr(t_push_swap *p);
 void				rra(t_push_swap *p);
-void				op_rra(t_push_swap *p);
 void				rrb(t_push_swap *p);
-void				op_rrb(t_push_swap *p);
 void				rrr(t_push_swap *p);
 
 #endif

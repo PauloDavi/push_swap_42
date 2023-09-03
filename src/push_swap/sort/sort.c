@@ -6,7 +6,7 @@
 /*   By: pdavi-al <pdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 00:53:44 by cobli             #+#    #+#             */
-/*   Updated: 2023/09/02 18:25:35 by pdavi-al         ###   ########.fr       */
+/*   Updated: 2023/09/03 17:32:05 by pdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,23 @@ void	sort(t_push_swap *push_swap)
 	size_t		max_b_index;
 	t_maximum	maximum;
 
-	maximum.m1 = max_a(push_swap);
-	maximum.m2 = max_a_before(push_swap, maximum.m1);
-	maximum.m3 = max_a_before(push_swap, maximum.m2);
-	push_b(push_swap, maximum);
-	push_b(push_swap, maximum);
-	while (push_swap->a.size > 3)
-		push_cheaper_to_b(push_swap, maximum);
-	sort_three(push_swap);
-	clean_state(&state);
-	max_b_index = find_index_b(push_swap, max_b(push_swap));
-	calc_rotate(&state, max_b_index, &(push_swap->b));
-	exec_state(push_swap, &state, false);
+	if (push_swap->a.size == 4)
+		sort_four(push_swap);
+	else
+	{
+		maximum.m1 = max_a(push_swap);
+		maximum.m2 = max_a_before(push_swap, maximum.m1);
+		maximum.m3 = max_a_before(push_swap, maximum.m2);
+		push_b(push_swap, maximum);
+		push_b(push_swap, maximum);
+		while (push_swap->a.size > 3)
+			push_cheaper_to_b(push_swap, maximum);
+		sort_three(push_swap);
+		clean_state(&state);
+		max_b_index = find_index_b(push_swap, max_b(push_swap));
+		calc_rotate(&state, max_b_index, &(push_swap->b));
+		exec_state(push_swap, &state, false);
+	}
 	while (push_swap->b.size != 0)
 		pa(push_swap);
 }
